@@ -237,7 +237,7 @@ Sistemul recomandă doar produse care se potrivesc EXACT acestui profil.
 
 ## 4. INTEGRARE RECOMBEE
 
-### Fluxul Complet (sync_to_recombee.py):
+### Fluxul Complet (recombee.py):
 
 ```
 1. DEFINIRE PROPRIETĂȚI
