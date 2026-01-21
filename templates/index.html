@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👗 Clothing Recommendation System</h1>
+            <p>Personalized clothing recommendations based on your preferences</p>
+        </header>
+
+        <main>
+            <div class="content-wrapper">
+                <!-- Left Panel: User Management -->
+                <section class="panel">
+                    <h2>User Management</h2>
+                    
+                    <div class="form-group">
+                        <label for="userInput">User ID:</label>
+                        <input type="text" id="userInput" placeholder="Enter user ID">
+                        <button onclick="createUser()">Create User</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="selectUser">Select User:</label>
+                        <select id="selectUser" onchange="selectUser()">
+                            <option value="">-- Choose a user --</option>
+                        </select>
+                    </div>
+
+                    <div id="userInfo" class="user-info hidden">
+                        <h3>Current User: <span id="currentUserName"></span></h3>
+                        <p>Purchases: <span id="purchaseCount">0</span></p>
+                    </div>
+                </section>
+
+                <!-- Middle Panel: Purchase History -->
+                <section class="panel">
+                    <h2>Purchase History</h2>
+                    <div id="purchaseHistory" class="purchase-history">
+                        <p class="empty-message">Select a user to see purchase history</p>
+                    </div>
+                </section>
+
+                <!-- Right Panel: Recommendations -->
+                <section class="panel">
+                    <h2>Recommendations</h2>
+                    <div class="form-group">
+                        <label for="numRecommendations">Number of recommendations:</label>
+                        <input type="number" id="numRecommendations" min="1" max="20" value="5">
+                        <button onclick="loadRecommendations()">Get Recommendations</button>
+                    </div>
+                    <div id="recommendations" class="recommendations">
+                        <p class="empty-message">Select a user and click "Get Recommendations"</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Bottom Panel: Add Product to User -->
+            <section class="panel full-width">
+                <h2>Add Product to User</h2>
+                <div class="form-group horizontal">
+                    <div>
+                        <label for="skuInput">SKU:</label>
+                        <input type="text" id="skuInput" placeholder="Enter product SKU">
+                    </div>
+                    <button onclick="addProductToUser()">Add Purchase</button>
+                </div>
+                <p class="hint">Type a SKU and click "Add Purchase" to add it to the current user's history</p>
+            </section>
+
+            <!-- Product Catalog -->
+            <section class="panel full-width">
+                <h2>Product Catalog (Sample)</h2>
+                <div id="productCatalog" class="product-catalog">
+                    <p class="empty-message">Loading products...</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Clothing Recommendation System • Content-Based Hybrid Model</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
